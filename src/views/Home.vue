@@ -6,12 +6,9 @@
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import HelloWorld from "@/components/HelloWorld.vue";
 
 @Component({
-    components: {
-        HelloWorld
-    }
+    components: {}
 })
 export default class Home extends Vue {}
 </script>
