@@ -1,17 +1,14 @@
 <template>
-    <div class="home">
-        <slider />
-    </div>
+    <div class="slider"></div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import Slider from "../components/Slider.vue";
 
 @Component({
-    components: { Slider }
+    components: {}
 })
-export default class Home extends Vue {}
+export default class Slider extends Vue {}
 </script>
 <style lang="less" scoped>
 @import "../style/index.less";
