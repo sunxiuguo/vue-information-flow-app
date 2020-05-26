@@ -1,24 +1,11 @@
 # vue-information-flow-app
 
-## Project setup
-```
-yarn install
-```
+### 功能
 
-### Compiles and hot-reloads for development
-```
-yarn serve
-```
-
-### Compiles and minifies for production
-```
-yarn build
-```
-
-### Lints and fixes files
-```
-yarn lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+1. 首页
+2. slider
+3. 文章列表/视频列表（包含整体滚动结构，列表项）
+4. 实时搜索
+5. 详情页
+6. axios 请求/mock
+7. vuex 的使用
