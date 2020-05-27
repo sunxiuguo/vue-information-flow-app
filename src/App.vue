@@ -33,7 +33,7 @@ html {
 }
 
 body {
-    margin: 1rem;
+    margin: 1.5rem;
 }
 
 @media only screen and (max-width: 338px) {
