@@ -17,21 +17,27 @@
 import { Component, Vue } from "vue-property-decorator";
 import { HomeRecommendListItem } from "../services/types";
 import Service from "../services/index";
+import { RouteNames } from "../router";
 
 @Component({
     components: {}
 })
 export default class HomeRecommend extends Vue {
-    list: HomeRecommendListItem[] = [];
-    // list = [1, 2, 3, 4, 5, 6];
+    // list: HomeRecommendListItem[] = [];
+    list = [1, 2, 3, 4, 5, 6];
     activeIndex = -1;
 
     onClick(index: number) {
         this.activeIndex = index;
+        setTimeout(() => {
+            this.$router.push({
+                name: RouteNames.List
+            });
+        }, 200);
     }
 
     async created() {
-        this.list = await Service.getHomeRecommendList();
+        // this.list = await Service.getHomeRecommendList();
     }
 }
 </script>
