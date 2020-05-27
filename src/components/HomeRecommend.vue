@@ -8,7 +8,10 @@
                 :key="item.text"
                 :class="{ hoverclass: index === activeIndex }"
                 @click="onClick(index)"
-            ></div>
+            >
+                <img :src="item.image" />
+                <span>{{ item.text }}</span>
+            </div>
         </div>
     </div>
 </template>
@@ -23,8 +26,7 @@ import { RouteNames } from "../router";
     components: {}
 })
 export default class HomeRecommend extends Vue {
-    // list: HomeRecommendListItem[] = [];
-    list = [1, 2, 3, 4, 5, 6];
+    list: HomeRecommendListItem[] = [];
     activeIndex = -1;
 
     onClick(index: number) {
@@ -37,7 +39,7 @@ export default class HomeRecommend extends Vue {
     }
 
     async created() {
-        // this.list = await Service.getHomeRecommendList();
+        this.list = await Service.getHomeRecommendList();
     }
 }
 </script>
@@ -62,10 +64,16 @@ h3 {
     .recommend-item {
         width: 10.6rem;
         height: 10.6rem;
-        margin-bottom: 1.5rem;
+        margin-bottom: 3rem;
         background: @main-color;
         border-radius: @main-border-radius;
         box-shadow: 0 1rem 2rem -0.4rem rgba(106, 182, 252, 0.5);
+
+        img {
+            border-radius: @main-border-radius;
+            width: 100%;
+            height: 100%;
+        }
     }
 }
 </style>
