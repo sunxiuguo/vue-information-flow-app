@@ -65,7 +65,7 @@ h3 {
         width: 10.6rem;
         height: 10.6rem;
         margin-bottom: 3rem;
-        background: @main-color;
+        background: gray;
         border-radius: @main-border-radius;
         box-shadow: 0 1rem 2rem -0.4rem rgba(106, 182, 252, 0.5);
 
