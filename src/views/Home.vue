@@ -1,6 +1,6 @@
 <template>
     <div class="home">
-        <slider />
+        <slider @onTabChange="onTabChange" />
     </div>
 </template>
 
@@ -11,7 +11,11 @@ import Slider from "../components/Slider.vue";
 @Component({
     components: { Slider }
 })
-export default class Home extends Vue {}
+export default class Home extends Vue {
+    onTabChange(tabIndex: number) {
+        console.log(tabIndex);
+    }
+}
 </script>
 <style lang="less" scoped>
 @import "../style/index.less";
