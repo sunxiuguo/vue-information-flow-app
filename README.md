@@ -27,12 +27,17 @@
    "https://img.tukuppt.com//ad_preview/00/19/70/5c9a0504de105.jpg!/fw/780",
    "http://pic.616pic.com/bg_w1180/00/14/61/bjDQ7hTsKA.jpg!/fw/1120"
    ];
-   2.3 首页推荐列表， 添加 axios，baseUrl, 添加 services https://easy-mock.com/project/5ece4b693895ef0603fa6f5f, 点击 Item translate3d
+   2.3 首页推荐列表， 添加 axios，baseUrl, 添加 services https://www.fastmock.site/#/project/10542, 点击 Item translate3d
    2.4 首页引用这些组件
 3. 列表页
    3.1 顶部搜索框 v-model 联动列表展示，样式优化，sticky
    3.2 列表项 左侧方块，emoji 表情。右侧上方 title, 下方 desc
    3.3 点击携带 id 跳转 detail
 
-4. vuex
+4. 详情页 获取 params.id，根据 id 调接口拿数据
+   4.1 头图
+   4.2 title
+   4.3 content white-space:pre-wrap
+
+5. vuex
    可以接口获取一个比较通用的文案/时间戳，利用 vuex 全页面展示

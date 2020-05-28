@@ -10,7 +10,12 @@
         </div>
 
         <div class="list-container">
-            <div class="list-item" v-for="item in currentList" :key="item.id">
+            <div
+                class="list-item"
+                v-for="item in currentList"
+                :key="item.id"
+                @click="toDetail(item.id)"
+            >
                 <div class="left-section">
                     {{ getRandomEmoji() }}
                 </div>
@@ -24,6 +29,7 @@
 </template>
 <script lang="ts">
 import { Component, Vue, Watch } from "vue-property-decorator";
+import { RouteNames } from "../router";
 
 @Component
 export default class List extends Vue {
@@ -89,15 +95,24 @@ export default class List extends Vue {
 
     search = "";
 
-    getRandomEmoji() {
-        return this.emojiList[Math.floor(Math.random() * 6)];
-    }
-
     @Watch("search")
     onSearchChange() {
         this.currentList = this.textList.filter(
             item => item.title.indexOf(this.search) > -1
         );
+    }
+
+    toDetail(id: number) {
+        this.$router.push({
+            name: RouteNames.Detail,
+            params: {
+                id: String(id)
+            }
+        });
+    }
+
+    getRandomEmoji() {
+        return this.emojiList[Math.floor(Math.random() * 5)];
     }
 }
 </script>

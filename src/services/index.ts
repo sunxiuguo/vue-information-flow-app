@@ -1,10 +1,10 @@
 import axios from "axios";
-import { HomeRecommendListItem } from "./types";
+import { HomeRecommendListItem, DetailInfo } from "./types";
 
 export default class Services {
     static init() {
         axios.defaults.baseURL =
-            "https://easy-mock.com/mock/5ece4b693895ef0603fa6f5f/mock-flow";
+            "https://www.fastmock.site/mock/505750b853376ff038612e1d348bf716/mockflow";
     }
 
     static async getHomeRecommendList() {
@@ -12,5 +12,10 @@ export default class Services {
         return axios
             .get<HomeRecommendListItem[]>("/homeRecommendList")
             .then(res => res.data);
+    }
+
+    static async getDetailById(id: number | string) {
+        this.init();
+        return axios.get<DetailInfo>(`/detail/${id}`).then(res => res.data);
     }
 }
