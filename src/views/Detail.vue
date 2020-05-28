@@ -15,8 +15,8 @@
 </template>
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import Services from "../services";
 import Loading from "../components/Loading.vue";
+import { DetailInfo } from "../services/types";
 
 @Component({
     components: {
@@ -34,7 +34,9 @@ export default class Detail extends Vue {
     }
 
     async created() {
-        const res = await Services.getDetailById(this.id);
+        const res = (this.$store.state.detailInfos as DetailInfo[]).filter(
+            item => String(item.id) === String(this.id)
+        )[0];
         this.title = res.title;
         this.content = res.content;
         this.imgSrc = res.image;

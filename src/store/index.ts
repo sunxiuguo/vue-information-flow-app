@@ -4,8 +4,14 @@ import Vuex from "vuex";
 Vue.use(Vuex);
 
 export default new Vuex.Store({
-    state: {},
-    mutations: {},
+    state: {
+        detailInfos: []
+    },
+    mutations: {
+        setDetailInfo(state, payload) {
+            state.detailInfos = payload;
+        }
+    },
     actions: {},
     modules: {}
 });

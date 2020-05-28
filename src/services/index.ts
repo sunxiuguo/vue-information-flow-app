@@ -14,8 +14,8 @@ export default class Services {
             .then(res => res.data);
     }
 
-    static async getDetailById(id: number | string) {
+    static async getList() {
         this.init();
-        return axios.get<DetailInfo>(`/detail/${id}`).then(res => res.data);
+        return axios.get<DetailInfo[]>("/list").then(res => res.data);
     }
 }

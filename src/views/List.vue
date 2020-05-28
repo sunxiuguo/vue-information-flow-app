@@ -21,83 +21,27 @@
                 </div>
                 <div class="right-section">
                     <span class="title">{{ item.title }}</span>
-                    <span class="desc">{{ item.desc }}</span>
+                    <span class="desc">{{ item.content }}</span>
                 </div>
             </div>
         </div>
     </div>
 </template>
 <script lang="ts">
-import { Component, Vue, Watch } from "vue-property-decorator";
+import { Component, Vue } from "vue-property-decorator";
 import { RouteNames } from "../router";
+import Services from "../services";
+import { DetailInfo } from "../services/types";
 
 @Component
 export default class List extends Vue {
     readonly emojiList = ["😨", "🤡", "👻", "👩", "💖"];
-    readonly textList = [
-        {
-            id: 1,
-            title: "震惊！一男一女竟然做出这种事！！！",
-            desc:
-                "在阴暗的房间里，小明摸索着前行，找不到开关，好像全世界都停电了。走着走着，突然...."
-        },
-        {
-            id: 2,
-            title: "震惊！一男一女竟然做出这种事！！！",
-            desc:
-                "在阴暗的房间里，小明摸索着前行，找不到开关，好像全世界都停电了。走着走着，突然...."
-        },
-        {
-            id: 3,
-            title: "震惊！一男一女竟然做出这种事！！！",
-            desc:
-                "在阴暗的房间里，小明摸索着前行，找不到开关，好像全世界都停电了。走着走着，突然...."
-        },
-        {
-            id: 4,
-            title: "震惊！一男一女竟然做出这种事！！！",
-            desc:
-                "在阴暗的房间里，小明摸索着前行，找不到开关，好像全世界都停电了。走着走着，突然...."
-        },
-        {
-            id: 5,
-            title: "握草！！一男一女竟然做出这种事！！！",
-            desc:
-                "在阴暗的房间里，小明摸索着前行，找不到开关，好像全世界都停电了。走着走着，突然...."
-        },
-        {
-            id: 6,
-            title: "震惊！一男一女竟然做出这种事！！！",
-            desc:
-                "在阴暗的房间里，小明摸索着前行，找不到开关，好像全世界都停电了。走着走着，突然...."
-        },
-        {
-            id: 9,
-            title: "握草！！一男一女竟然做出这种事！！！",
-            desc:
-                "在阴暗的房间里，小明摸索着前行，找不到开关，好像全世界都停电了。走着走着，突然...."
-        },
-        {
-            id: 7,
-            title: "震惊！一男一女竟然做出这种事！！！",
-            desc:
-                "在阴暗的房间里，小明摸索着前行，找不到开关，好像全世界都停电了。走着走着，突然...."
-        },
-        {
-            id: 8,
-            title: "握草！！一男一女竟然做出这种事！！！",
-            desc:
-                "在阴暗的房间里，小明摸索着前行，找不到开关，好像全世界都停电了。走着走着，突然...."
-        }
-    ];
-
-    currentList = JSON.parse(JSON.stringify(this.textList));
+    textList: DetailInfo[] = [];
 
     search = "";
 
-    @Watch("search")
-    onSearchChange() {
-        this.currentList = this.textList.filter(
+    get currentList() {
+        return this.textList.filter(
             item => item.title.indexOf(this.search) > -1
         );
     }
@@ -113,6 +57,11 @@ export default class List extends Vue {
 
     getRandomEmoji() {
         return this.emojiList[Math.floor(Math.random() * 5)];
+    }
+
+    async created() {
+        this.textList = await Services.getList();
+        this.$store.commit("setDetailInfo", this.textList);
     }
 }
 </script>
@@ -189,6 +138,12 @@ export default class List extends Vue {
                 font-size: 1.2rem;
                 font-weight: 400;
                 text-align: left;
+                text-overflow: ellipsis;
+
+                display: -webkit-box;
+                -webkit-line-clamp: 2;
+                overflow: hidden;
+                -webkit-box-orient: vertical;
             }
         }
     }

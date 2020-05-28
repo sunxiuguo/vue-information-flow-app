@@ -33,8 +33,18 @@
    3.1 顶部搜索框 v-model 联动列表展示，样式优化，sticky
    3.2 列表项 左侧方块，emoji 表情。右侧上方 title, 下方 desc
    3.3 点击携带 id 跳转 detail
+   3.4 超过两行省略号
 
-4. 详情页 获取 params.id，根据 id 调接口拿数据
+    ```cs
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    ```
+
+    3.5 调接口获取数据，数据存储 vuex
+
+4. 详情页 获取 params.id，根据 id 从 vuex 拿数据
    4.1 头图
    4.2 title
    4.3 content white-space:pre-wrap
