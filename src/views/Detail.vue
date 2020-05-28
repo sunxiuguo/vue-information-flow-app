@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="detail-root">
         <loading v-if="loading" />
         <div class="detail" v-if="imgSrc">
             <img :src="imgSrc" alt="banner" class="detail-banner" />
@@ -48,6 +48,10 @@ export default class Detail extends Vue {
 }
 </script>
 <style lang="less" scoped>
+.detail-root {
+    position: relative;
+    height: 100vh;
+}
 .detail-banner {
     width: 100%;
 }

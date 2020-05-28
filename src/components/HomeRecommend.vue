@@ -35,7 +35,7 @@ export default class HomeRecommend extends Vue {
             this.$router.push({
                 name: RouteNames.List
             });
-        }, 200);
+        }, 100);
     }
 
     async created() {
