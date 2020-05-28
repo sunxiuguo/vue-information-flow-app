@@ -21,7 +21,8 @@ import { DetailInfo } from "../services/types";
 @Component({
     components: {
         Loading
-    }
+    },
+    name: "detail"
 })
 export default class Detail extends Vue {
     title = "";

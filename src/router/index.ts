@@ -18,27 +18,27 @@ const routes: Array<RouteConfig> = [
     {
         path: "/",
         name: RouteNames.Home,
-        component: Home
+        component: Home,
+        meta: {
+            depth: 1
+        }
     },
     {
         path: "/list",
         name: RouteNames.List,
         component: List,
-        children: [
-            {
-                path: "",
-                component: List
-            },
-            {
-                path: ":type",
-                component: List
-            }
-        ]
+        meta: {
+            keepAlive: true,
+            depth: 2
+        }
     },
     {
         path: "/detail/:id",
         name: RouteNames.Detail,
-        component: Detail
+        component: Detail,
+        meta: {
+            depth: 3
+        }
     }
 ];
 

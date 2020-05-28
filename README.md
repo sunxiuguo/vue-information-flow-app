@@ -42,12 +42,16 @@
     -webkit-box-orient: vertical;
     ```
 
-    3.5 调接口获取数据，数据存储 vuex
+    3.5 loading 组件
+    3.6 调接口获取数据，数据存储 vuex
 
 4. 详情页 获取 params.id，根据 id 从 vuex 拿数据
    4.1 头图
    4.2 title
    4.3 content white-space:pre-wrap
 
-5. vuex
-   可以接口获取一个比较通用的文案/时间戳，利用 vuex 全页面展示
+5. router keep-alive 必须在组件内，给组件命名，用字符串
+   5.1 home -> list, list 组件刷新
+   5.2 detail -> list, list 组件是缓存住的
+   5.3 由于 list 组件缓存住了,search 也被缓存了，所以需要在 activated 里清空
+6. router 动效

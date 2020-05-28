@@ -13,7 +13,8 @@ import Banner from "../components/Banner.vue";
 import HomeRecommend from "../components/HomeRecommend.vue";
 
 @Component({
-    components: { Slider, Banner, HomeRecommend }
+    components: { Slider, Banner, HomeRecommend },
+    name: "home"
 })
 export default class Home extends Vue {
     readonly BANNER_LIST = [

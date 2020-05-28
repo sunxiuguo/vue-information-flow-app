@@ -33,7 +33,9 @@ import { RouteNames } from "../router";
 import Services from "../services";
 import { DetailInfo } from "../services/types";
 
-@Component
+@Component({
+    name: "list"
+})
 export default class List extends Vue {
     readonly emojiList = ["😨", "🤡", "👻", "👩", "💖"];
     textList: DetailInfo[] = [];
@@ -62,6 +64,10 @@ export default class List extends Vue {
     async created() {
         this.textList = await Services.getList();
         this.$store.commit("setDetailInfo", this.textList);
+    }
+
+    activated() {
+        this.search = "";
     }
 }
 </script>

@@ -1,9 +1,36 @@
 <template>
     <div id="app">
-        <router-view />
+        <keep-alive :include="keepAliveNames">
+            <router-view v-if="$route.meta.keepAlive" />
+        </keep-alive>
+        <router-view v-if="!$route.meta.keepAlive" />
     </div>
 </template>
+<script lang="ts">
+import { Component, Vue, Watch } from "vue-property-decorator";
+import { Route } from "vue-router";
 
+@Component({
+    components: {}
+})
+export default class App extends Vue {
+    keepAliveNames: string[] = [];
+
+    @Watch("$route")
+    onRouteChange(to: Route, from: Route) {
+        // 前进
+        if (to.meta.keepAlive && !this.keepAliveNames.includes(to.name!)) {
+            this.keepAliveNames.push(to.name!);
+        }
+
+        // 返回
+        if (from.meta.keepAlive && from.meta.depth > to.meta.depth) {
+            const index = this.keepAliveNames.indexOf(from.name!);
+            index !== -1 && this.keepAliveNames.splice(index, 1);
+        }
+    }
+}
+</script>
 <style lang="less">
 #app {
     font-family: Avenir, Helvetica, Arial, sans-serif;
