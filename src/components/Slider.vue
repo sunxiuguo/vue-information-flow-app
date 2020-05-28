@@ -18,7 +18,7 @@ import { Component, Vue } from "vue-property-decorator";
     components: {}
 })
 export default class Slider extends Vue {
-    tabs: string[] = ["我的", "发现", "文章", "视频", "他的", "娱乐", "朋友"];
+    tabs: string[] = ["我的", "视频", "文章", "发现", "他的", "娱乐", "朋友"];
     activeTab = 0;
 
     changeActiveTab(index: number) {
