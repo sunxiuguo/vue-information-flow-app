@@ -9,6 +9,7 @@
 5. 详情页
 6. axios 请求/mock
 7. vuex 的使用
+8. router 动效
 
 ### 开始
 
